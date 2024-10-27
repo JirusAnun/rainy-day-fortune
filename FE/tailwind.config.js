@@ -13,10 +13,13 @@ export default {
         fall: "fall linear infinite",
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(circle, var(--tw-gradient-stops))',
+        "gradient-radial": "radial-gradient(circle, var(--tw-gradient-stops))",
       },
       colors: {
-        'blue-900': '#1e3a8a',
+        "blue-900": "#1e3a8a",
+      },
+      fontFamily: {
+        handWrite: ["Shadows Into Light", "cursive"],
       },
     },
   },

@@ -35,17 +35,20 @@ function App() {
 
   return (
     <div
-      className="relative w-screen h-screen overflow-hidden flex items-center justify-center"
+      className="relative w-screen h-screen overflow-hidden flex items-center justify-center font-handWrite font-semibold tracking-[0.3rem] film-effect"
       onClick={handleClick}
     >
+      {/* Background Gradient */}
       <div
         className={`absolute inset-0 ${
-          currentStep > 16
-            ? "bg-yellow-500"
-            : "bg-gradient-radial from-blue-900 via-blue-900 to-black"
+          currentStep > 16 ? "bg-yellow-500" : "bg-gradient-radial from-blue-900 via-blue-900 to-black"
         }`}
       ></div>
-      <div className="relative z-10 text-center">
+      
+      {/* Noise Overlay */}
+      <div className="absolute inset-0 bg-noise"></div>
+
+      <div className="relative z-10 text-center p-[10%]">
         {currentStep === 0 && (
           <AnimatedText
             text="The rain is relentless"
@@ -247,24 +250,36 @@ function App() {
           </div>
         )}
       </div>
+      <Raindrops />
       <style>{`
-  @keyframes fadeIn {
-    0% { opacity: 0; visibility: hidden; }
-    100% { opacity: 1; visibility: visible; }
-  }
+        .film-effect {
+          position: relative;
+          filter: sepia(0.2) brightness(0.9) contrast(1.1);
+        }
 
-  @keyframes fadeOut {
-    0% { opacity: 1; visibility: visible; }
-    100% { opacity: 0; visibility: hidden; }
-  }
+        .bg-noise {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.90' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+          background-repeat: repeat;
+          opacity: 0.15;
+        }
 
-  .animate-fade-in {
-    animation: fadeIn 2s ease-in-out forwards;
-  }
+        @keyframes fadeIn {
+          0% { opacity: 0; visibility: hidden; }
+          100% { opacity: 1; visibility: visible; }
+        }
 
-  .animate-fade-out {
-    animation: fadeOut 2s ease-in-out forwards;
-  }
+        @keyframes fadeOut {
+          0% { opacity: 1; visibility: visible; }
+          100% { opacity: 0; visibility: hidden; }
+        }
+
+        .animate-fade-in {
+          animation: fadeIn 2s ease-in-out forwards;
+        }
+
+        .animate-fade-out {
+          animation: fadeOut 2s ease-in-out forwards;
+        }
       `}</style>
     </div>
   );
