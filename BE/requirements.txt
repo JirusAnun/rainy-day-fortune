@@ -3,4 +3,4 @@ uvicorn==0.32.0
 transformers==4.39.0
 gunicorn==23.0.0
 tensorflow==2.18.0
-keras==3.6.0
+tf-keras==2.18.0
